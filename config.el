@@ -51,12 +51,20 @@
 (setq org-directory "~/org/")
 (setq org-roam-directory (file-truename "~/org/roam"))
 
-;; We don't want to use C-w to windows
-;; We want C-hjkl
-(map! :n "C-h" #'evil-window-left
-      :n "C-j" #'evil-window-down
-      :n "C-k" #'evil-window-up
-      :n "C-l" #'evil-window-right)
+;; We're not using Evil mode but we want vim keys
+(global-set-key (kbd "M-?") 'help-command)
+(global-set-key (kbd "C-h") 'backward-char)
+(global-set-key (kbd "C-j") 'next-line)
+(global-set-key (kbd "C-k") 'previous-line)
+(global-set-key (kbd "C-l") 'forward-char)
+
+(global-unset-key (kbd "C-d"))
+
+(defun my-kill-whole-line ()
+  (interactive)
+  (beginning-of-line)
+  (kill-line 1))
+(global-set-key (kbd "C-d C-d") 'my-kill-whole-line)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
