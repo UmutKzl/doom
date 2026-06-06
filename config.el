@@ -39,8 +39,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq catppuccin-flavor 'mocha)
-(setq doom-theme 'catppuccin)
+;; (setq catppuccin-flavor 'mocha)
+(setq doom-theme 'doom-tokyo-night)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -50,21 +50,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-roam-directory (file-truename "~/org/roam"))
-
-;; We're not using Evil mode but we want vim keys
-(global-set-key (kbd "M-?") 'help-command)
-(global-set-key (kbd "C-h") 'backward-char)
-(global-set-key (kbd "C-j") 'next-line)
-(global-set-key (kbd "C-k") 'previous-line)
-(global-set-key (kbd "C-l") 'forward-char)
-
-(global-unset-key (kbd "C-d"))
-
-(defun my-kill-whole-line ()
-  (interactive)
-  (beginning-of-line)
-  (kill-line 1))
-(global-set-key (kbd "C-d C-d") 'my-kill-whole-line)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
